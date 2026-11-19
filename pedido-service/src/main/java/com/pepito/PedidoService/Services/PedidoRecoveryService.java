@@ -30,7 +30,6 @@ public class PedidoRecoveryService {
                     pedido.setTotal(producto.getPrecio() * pedido.getCantidad());
                     pedidoRepository.save(pedido);
                 } catch (Exception e) {
-                    // TODO: handle exception
                     pedidoRepository.delete(pedido);
                 }
             } 
