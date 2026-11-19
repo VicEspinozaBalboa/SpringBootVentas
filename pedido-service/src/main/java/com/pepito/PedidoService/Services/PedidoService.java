@@ -11,6 +11,7 @@ import com.pepito.PedidoService.DTOs.Producto;
 import com.pepito.PedidoService.Models.Pedido;
 import com.pepito.PedidoService.Repositories.PedidoRepository;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 
 @Service 
@@ -22,6 +23,7 @@ public class PedidoService {
     //private productoRepository productoRepository;
     private RestTemplate restTemplate;
     //private final ProductoClient productoClient;
+    @CircuitBreaker (name = "productoServiceCB", fallbackMethod = "fallbackGetProducto")
     public Pedido registrarPedido(Pedido pedido){
         //Llamada al microservicio de productos
         String productoURL = "http://localhost:8080/api/v1/productos/" + pedido.getIdProducto();
@@ -36,5 +38,14 @@ public class PedidoService {
 
     public List<Pedido> obtenerTodosLosPedidos(){
         return pedidoRepository.findAll();
+    } 
+
+    public Pedido fallbackGetProducto(Pedido pedido, Throwable ex){
+       System.err.println("FALLBACK originado por " + ex.getMessage()); 
+        Pedido pedidoFallBack = new Pedido();
+        pedidoFallBack.setIdProducto(pedido.getIdProducto());
+        pedidoFallBack.setCantidad(pedido.getCantidad());
+        pedidoFallBack.setTotal(-1.0); 
+        return pedidoRepository.save(pedidoFallBack);
     }
 }
