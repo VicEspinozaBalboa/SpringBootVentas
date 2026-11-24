@@ -10,7 +10,7 @@
         scope="context"
         name="ARCHIVO_LOG"
         source="logging.file.name"
-        defaultValue="logs/${NOMBRE_APP}.log"/>
+        defaultValue="target/logs/${NOMBRE_APP}.log"/>
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
@@ -18,7 +18,7 @@
         <file>${ARCHIVO_LOG}</file>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/${NOMBRE_APP}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>target/logs/${NOMBRE_APP}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>

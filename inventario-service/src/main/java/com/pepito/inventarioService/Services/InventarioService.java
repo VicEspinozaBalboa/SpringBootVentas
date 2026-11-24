@@ -49,7 +49,12 @@ public class InventarioService {
 		Inventario inventario = inventarioRepository.findByProductId(productId)
 				.orElseGet(() -> new Inventario(productId, cantidadDisponible));
 		inventario.setCantidadDisponible(cantidadDisponible);
-		return inventarioRepository.save(inventario);
+		Inventario inventarioActualizado = inventarioRepository.save(inventario);
+		logger.info(
+				"Stock ajustado: productId={}, cantidadDisponible={}",
+				productId,
+				cantidadDisponible);
+		return inventarioActualizado;
 	}
 
 	@Transactional

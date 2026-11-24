@@ -12,6 +12,7 @@ services:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - /Users/user/Cursos/SPRING-BOOT/SistemaVentas/producto-service/target/logs:/var/log/apps:ro
       - /Users/user/Cursos/SPRING-BOOT/SistemaVentas/pedido-service/target/logs:/var/log/apps2:ro
+      - /Users/user/Cursos/SPRING-BOOT/SistemaVentas/inventario-service/target/logs:/var/log/apps3:ro
     depends_on:
       - logstash
     networks:
