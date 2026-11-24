@@ -23,6 +23,7 @@
 	<modules>
 		<module>producto-service</module>
 		<module>pedido-service</module>
+		<module>inventario-service</module>
 		<module>eureka-service</module>
 		<module>configuracion-service</module>
 		<module>commons</module>

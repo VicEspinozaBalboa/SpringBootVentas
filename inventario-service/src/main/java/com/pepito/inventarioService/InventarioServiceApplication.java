@@ -1,13 +1,12 @@
-package com.pepito.ProductoService;
+package com.pepito.InventarioService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductoServiceApplication {
+public class InventarioServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductoServiceApplication.class, args);
+		SpringApplication.run(InventarioServiceApplication.class, args);
 	}
-
 }
