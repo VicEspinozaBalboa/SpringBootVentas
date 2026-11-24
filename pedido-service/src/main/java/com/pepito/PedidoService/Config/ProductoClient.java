@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.pepito.PedidoService.DTOs.Producto;
 
-@FeignClient (name = "poducto-service")
+@FeignClient (name = "producto-service")
 public interface ProductoClient {
     @GetMapping ("/api/v1/productos/{id}")
     Producto obteneProductoPorId(@PathVariable Long id);

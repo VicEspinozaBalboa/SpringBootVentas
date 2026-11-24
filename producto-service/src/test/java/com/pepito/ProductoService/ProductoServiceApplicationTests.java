@@ -1,9 +1,6 @@
 package com.pepito.ProductoService;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
 class ProductoServiceApplicationTests {
 
 	@Test
